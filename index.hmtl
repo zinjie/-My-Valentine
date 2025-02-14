@@ -1,1 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine's Day Letter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #fce4e4;
+    }
+    .container {
+      position: relative;
+      width: 300px;
+      height: 200px;
+    }
+    .envelope {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #e57373;
+      border-radius: 10px;
+      transition: transform 1s ease-in-out;
+      cursor: pointer;
+    }
+    .envelope.open {
+      transform: rotateX(180deg);
+    }
+    .envelope:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-left: 50px solid transparent;
+      border-right: 50px solid transparent;
+      border-bottom: 50px solid #e57373;
+      transform: translateX(-50%);
+    }
+    .letter {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 16px;
+      text-align: center;
+      color: #d32f2f;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      width: 80%;
+      white-space: pre-wrap;
+      line-height: 1.6;
+    }
+    .letter.show {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="envelope" onclick="openEnvelope()"></div>
+    <div class="letter">
+      <p>Dear Mila,</p>
+      <p>From the moment I met you, I knew you were the one. You make my world feel right, even when everything else feels wrong. With you, every day feels like summer, no matter how much rain may fall.</p>
+      <p>I know we may have our little disagreements, and sometimes we’ll argue over the smallest things, but I wouldn’t change a single moment with you. Because through it all, I know that our love is strong, and you are the person I want by my side, always.</p>
+      <p>Life can be uncertain, and sometimes a little scary, but with you, I feel ready for anything. You make my heart whole, and together, we complete each other. I never truly believed in love the way I do now—not until you came along and changed everything.</p>
+      <p>So today, I just want to remind you: You are my one, my only, my everything.</p>
+      <p>Forever yours,</p>
+      <p>Zinjie Raliuga</p>
+    </div>
+  </div>
+  
+  <script>
+    function openEnvelope() {
+      document.querySelector('.envelope').classList.add('open');
+      setTimeout(function() {
+        document.querySelector('.letter').classList.add('show');
+      }, 1000); // Letter appears 1 second after the envelope opens
+    }
+  </script>
+</body>
+</html>
 
