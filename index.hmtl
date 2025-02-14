@@ -1,89 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Valentine's Day Letter</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      background-color: #fce4e4;
-    }
-    .container {
-      position: relative;
-      width: 300px;
-      height: 200px;
-    }
-    .envelope {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: #e57373;
-      border-radius: 10px;
-      transition: transform 1s ease-in-out;
-      cursor: pointer;
-    }
-    .envelope.open {
-      transform: rotateX(180deg);
-    }
-    .envelope:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 50%;
-      width: 0;
-      height: 0;
-      border-left: 50px solid transparent;
-      border-right: 50px solid transparent;
-      border-bottom: 50px solid #e57373;
-      transform: translateX(-50%);
-    }
-    .letter {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 16px;
-      text-align: center;
-      color: #d32f2f;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-      width: 80%;
-      white-space: pre-wrap;
-      line-height: 1.6;
-    }
-    .letter.show {
-      opacity: 1;
-    }
-  </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Envelope</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #ffe6e6;
+            font-family: "Shadows Into Light", serif;
+            margin: 0;
+            background-image:url(image/BG.jpg);
+        }
+        .container {
+            text-align: center;
+        }
+        .envelope {
+            position: relative;
+            width: 500px;
+            height: 300px;
+            background-color: #ff7f7f;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            overflow: hidden;
+        }
+        .flap {
+            position: absolute;
+            top: 0;
+            width: 0;
+            height: 0;
+            border-left: 550px solid transparent;
+            border-right: 550px solid transparent;
+            border-bottom: 100px solid #d9534f;
+            margin-top: -100px;
+            rotate: 180deg;
+            transform-origin: bottom;
+            transition: transform 0.20s;
+        }
+        .card {
+            position: absolute;
+            margin: -40px;
+            bottom: 0;
+            width: 90%;
+            height: 255px;
+            background-color: white;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content:unsafe;
+            transform: translateY(100%);
+            transition: transform 0.5s;
+            padding: 10px;
+            /* font-size: 15px;
+            font-weight:lighter; */
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #c9302c;
+        }
+        /* style for content */
+        #greeting{
+            font-size: xx-large;
+            color: #c9302c;
+            text-shadow: #ff7f7f;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <div class="envelope" onclick="openEnvelope()"></div>
-    <div class="letter">
-      <p>Dear Mila,</p>
-      <p>From the moment I met you, I knew you were the one. You make my world feel right, even when everything else feels wrong. With you, every day feels like summer, no matter how much rain may fall.</p>
-      <p>I know we may have our little disagreements, and sometimes we’ll argue over the smallest things, but I wouldn’t change a single moment with you. Because through it all, I know that our love is strong, and you are the person I want by my side, always.</p>
-      <p>Life can be uncertain, and sometimes a little scary, but with you, I feel ready for anything. You make my heart whole, and together, we complete each other. I never truly believed in love the way I do now—not until you came along and changed everything.</p>
-      <p>So today, I just want to remind you: You are my one, my only, my everything.</p>
-      <p>Forever yours,</p>
-      <p>Zinjie Raliuga</p>
+    <div class="container">
+        <h2 id="greeting">Happy Hearts Day</h2>
+        <div class="envelope" id="envelope">
+            <div class="flap" id="flap"></div>
+            <div class="card" id="card">
+                <p><strong><class="max">Dear Mila
+                    <p> 
+                        From the moment I met you, I knew you were the one. With you, even the darkest days feel bright. No storm, no doubt, no distance could ever change what we have.  
+                        We may disagree at times, but I wouldn’t trade a single moment. Through it all, our love stands strong.  
+                        Life is uncertain, but with you, I fear nothing. You are my heart, my home, my everything.  
+                        <br><br>
+                        Forever yours, 
+                        Zinjie Raliuga
+                    </p>
+                </strong></p>
+            </div>
+        </div>
+        <button id="toggleEnvelope">Click Here</button>
     </div>
-  </div>
-  
-  <script>
-    function openEnvelope() {
-      document.querySelector('.envelope').classList.add('open');
-      setTimeout(function() {
-        document.querySelector('.letter').classList.add('show');
-      }, 1000); // Letter appears 1 second after the envelope opens
-    }
-  </script>
+    <audio id="background-music" loop>
+        <source src="audio/Kodaline - The One.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <script>
+        let isOpen = false;
+        let isPlaying = false;
+        let audio = document.getElementById("background-music");
+        let flap = document.getElementById("flap");
+        let card = document.getElementById("card");
+        let button = document.getElementById("toggleEnvelope");
+
+        button.addEventListener("click", function () {
+            if (!isOpen) {
+                flap.style.transform = "rotateX(180deg)";
+                card.style.transform = "translateY(-20%)";
+                button.textContent = "Close";
+                if (!isPlaying) {
+                    audio.play();
+                    isPlaying = true;
+                }
+            } else {
+                flap.style.transform = "rotateX(0deg)";
+                card.style.transform = "translateY(100%)";
+                button.textContent = "Click Here";
+                audio.pause();
+                audio.currentTime = 0;
+                isPlaying = false;
+            }
+            isOpen = !isOpen;
+        });
+    </script>
 </body>
 </html>
-
